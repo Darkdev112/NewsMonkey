@@ -42,11 +42,15 @@ export class News extends Component {
         });
     }
 
+    captalize = (str) => {
+        for(let i=0; i<str.length; i++){
+            return str.charAt(i).toUpperCase() + str.slice(1,str.length);
+        }
+    }
+    
     componentDidMount() {
-        setTimeout(() => {
-            console.log(this.state.page);
-            this.updateNews();
-        }, 0);
+        this.updateNews();
+        document.title = `NewsMonkey - ${this.captalize(this.props.category)}`;
     }
 
     handlePreviousButton = () => {
@@ -54,7 +58,6 @@ export class News extends Component {
             page: this.state.page - 1
         });
         setTimeout(() => {
-            console.log(this.state.page);
             this.updateNews();
         }, 0);
     }
@@ -64,7 +67,6 @@ export class News extends Component {
             page: this.state.page + 1
         });
         setTimeout(() => {
-            console.log(this.state.page);
             this.updateNews();
         }, 0);
     }
@@ -73,7 +75,7 @@ export class News extends Component {
     render() {
         return (
             <div className="container my-3">
-                <h1 className="text-center" style={{ margin: "30px 0px" }}>NewsMonkey Top HeadLines</h1>
+                <h1 className="text-center" style={{ margin: "30px 0px" }}>NewsMonkey - Top {this.captalize(this.props.category)} HeadLines</h1>
                 {this.state.loading && <Spinner />}
                 <div className="row">
                     {!this.state.loading && this.state.articles.map((element) => {
