@@ -30,7 +30,7 @@ export class News extends Component {
 
     updateNews = async () => {
         this.props.setProgress(10);
-        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=a9ea81e445fd4c55b6c55400987de2c3&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
         this.setState({
             loading: true
         })
@@ -62,7 +62,7 @@ export class News extends Component {
             page: this.state.page + 1
         });
         setTimeout(async() => {
-            let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=a9ea81e445fd4c55b6c55400987de2c3&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+            let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
             this.setState({
                 loading: true
             })
